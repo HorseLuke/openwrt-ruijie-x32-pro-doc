@@ -1,0 +1,88 @@
+// SPDX-License-Identifier: (GPL-2.0-only OR MIT)
+
+/dts-v1/;
+
+#include "mt7622-ruijie-x32-pro.dtsi"
+
+/ {
+	model = "Ruijie X32 Pro";
+
+	compatible = "ruijie,x32-pro", "mediatek,mt7622";
+
+};
+
+&nor_partitions {
+			partition@00000 {
+				label = "Preloader";
+				reg = <0x00 0x40000>;
+			};
+
+			partition@40000 {
+				label = "ATF";
+				reg = <0x40000 0x20000>;
+			};
+
+			partition@60000 {
+				label = "u-boot";
+				reg = <0x60000 0x50000>;
+			};
+
+			partition@B0000 {
+				label = "u-boot-env";
+				reg = <0xb0000 0x20000>;
+			};
+
+			factory: partition@D0000 {
+				label = "Factory";
+				reg = <0xd0000 0x80000>;
+			};
+
+			partition@150000 {
+				label = "product_info";
+				reg = <0x150000 0x10000>;
+			};
+
+			partition@160000 {
+				label = "kdump";
+				reg = <0x160000 0x10000>;
+			};
+
+			partition@170000 {
+				label = "firmware";
+				reg = <0x170000 0xe90000>;
+			};
+
+};
+
+&wmac {
+	mediatek,mtd-eeprom = <&factory 0x0000>;
+	status = "okay";
+};
+
+&wmac1 {
+	mediatek,mtd-eeprom = <&factory 0x05000>;
+};
+
+&gmac0 {
+	nvmem-cells = <&macaddr_factory_7fff4>;
+	nvmem-cell-names = "mac-address";
+};
+
+&wan {
+	nvmem-cells = <&macaddr_factory_7fffa>;
+	nvmem-cell-names = "mac-address";
+};
+
+&factory {
+	compatible = "nvmem-cells";
+	#address-cells = <1>;
+	#size-cells = <1>;
+
+	macaddr_factory_7fff4: macaddr@7fff4 {
+		reg = <0x7fff4 0x6>;
+	};
+
+	macaddr_factory_7fffa: macaddr@7fffa {
+		reg = <0x7fffa 0x6>;
+	};
+};

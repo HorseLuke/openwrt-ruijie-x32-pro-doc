@@ -1,0 +1,171 @@
+--- linksys-E8450.dts	2021-09-06 22:21:20.193985400 +0800
++++ ruijie-x32-pro.dts	2021-09-06 22:27:31.909237900 +0800
+@@ -607,7 +607,7 @@
+ 			phandle = < 0x22 >;
+ 
+ 			pins_cmd_dat {
+-				pinmux = < 0x5b05 0x5c05 0x5d05 0x5e05 0x5f00 0x6001 0x6101 0x6201 0x6305 0x6405 0x4905 0x4a05 0x4b05 0x4c05 0x4d05 0x1605 >;
++				pinmux = < 0x5b05 0x5c05 0x5d05 0x5e05 0x5f05 0x6005 0x6105 0x6205 0x6305 0x6405 0x4905 0x4a05 0x4b05 0x4c05 0x4d05 0x1605 >;
+ 			};
+ 		};
+ 	};
+@@ -925,37 +925,16 @@
+ 				partition@1c0000 {
+ 					label = "Factory";
+ 					reg = < 0x1c0000 0x100000 >;
+-					read-only;
+-				};
+-
+-				partition@300000 {
+-					label = "Devinfo";
+-					reg = < 0x300000 0x20000 >;
+-				};
+-
+-				partition@320000 {
+-					label = "senv";
+-					reg = < 0x320000 0x20000 >;
+-				};
+-
+-				partition@360000 {
+-					label = "bootseq";
+-					reg = < 0x360000 0x20000 >;
+-				};
+-
+-				partition@500000 {
+-					label = "Kernel1";
+-					reg = < 0x500000 0x1e00000 >;
+ 				};
+ 
+-				partition@2300000 {
+-					label = "Kernel2";
+-					reg = < 0x2300000 0x1e00000 >;
++				partition@200000 {
++					label = "Kernel";
++					reg = < 0x2c0000 0x2000000 >;
+ 				};
+ 
+-				partition@5a00000 {
+-					label = "mfg";
+-					reg = < 0x5a00000 0x1400000 >;
++				partition@2200000 {
++					label = "User_data";
++					reg = < 0x22c0000 0x4000000 >;
+ 				};
+ 			};
+ 		};
+@@ -997,23 +976,33 @@
+ 			};
+ 
+ 			partition@60000 {
+-				label = "Bootloader";
+-				reg = < 0x60000 0x40000 >;
++				label = "u-boot";
++				reg = < 0x60000 0x50000 >;
+ 			};
+ 
+-			partition@A0000 {
+-				label = "Config";
+-				reg = < 0xa0000 0x20000 >;
++			partition@B0000 {
++				label = "u-boot-env";
++				reg = < 0xb0000 0x20000 >;
+ 			};
+ 
+-			partition@C0000 {
++			partition@D0000 {
+ 				label = "Factory";
+-				reg = < 0xc0000 0x80000 >;
++				reg = < 0xd0000 0x80000 >;
++			};
++
++			partition@150000 {
++				label = "product_info";
++				reg = < 0x150000 0x10000 >;
++			};
++
++			partition@160000 {
++				label = "kdump";
++				reg = < 0x160000 0x10000 >;
+ 			};
+ 
+-			partition@E0000 {
+-				label = "Kernel";
+-				reg = < 0x140000 0xec0000 >;
++			partition@170000 {
++				label = "firmware";
++				reg = < 0x170000 0xe90000 >;
+ 			};
+ 		};
+ 	};
+@@ -1354,18 +1343,6 @@
+ 			};
+ 		};
+ 
+-		mac@1 {
+-			compatible = "mediatek,eth-mac";
+-			reg = < 0x01 >;
+-			phy-mode = "rgmii";
+-
+-			fixed-link {
+-				speed = < 0x3e8 >;
+-				full-duplex;
+-				pause;
+-			};
+-		};
+-
+ 		mdio-bus {
+ 			#address-cells = < 0x01 >;
+ 			#size-cells = < 0x00 >;
+@@ -1400,8 +1377,10 @@
+ 		resets = < 0x2f 0x00 >;
+ 		reset-names = "mtketh";
+ 		status = "okay";
+-		mtketh-wan = "eth1";
+-		mtketh-max-gmac = < 0x02 >;
++		mtketh-wan = "eth0.1";
++		mtketh-ppd = "eth0.233";
++		ext-devices = "rai0\0ra0\0rai1\0ra1\0rai2\0ra2\0rai3\0ra3\0apclii0\0apcli0";
++		mtketh-max-gmac = < 0x01 >;
+ 	};
+ 
+ 	wdma@1b102800 {
+@@ -1469,14 +1448,34 @@
+ 			label = "reset";
+ 			gpios = < 0x20 0x00 0x01 >;
+ 			linux,code = < 0x198 >;
+-			debounce-interval = < 0x3c >;
+ 		};
+ 
+-		wps {
+-			label = "wps";
++		mesh {
++			label = "mesh";
+ 			gpios = < 0x20 0x66 0x01 >;
+-			linux,code = < 0x211 >;
+-			debounce-interval = < 0x3c >;
++			linux,code = < 0x100 >;
++		};
++	};
++
++	leds-gpio {
++		compatible = "gpio-leds";
++
++		sysled {
++			label = "sysled";
++			gpios = < 0x20 0x51 0x01 >;
++			linux,default-trigger = "timer";
++		};
++	};
++
++	leds-color {
++		compatible = "color-leds";
++
++		meshled {
++			label = "meshled";
++			green-gpios = < 0x20 0x4f 0x01 >;
++			red-gpios = < 0x20 0x52 0x01 >;
++			default-color = "unknow";
++			linux,default-trigger = "none";
+ 		};
+ 	};
+ 
