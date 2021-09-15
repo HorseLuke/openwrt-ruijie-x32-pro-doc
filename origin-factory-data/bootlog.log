@@ -1,0 +1,635 @@
+F0: 102B 0000
+F1: 0000 0000
+V0: 0000 0000 [0001]
+00: 0000 0000
+BP: 0000 0041 [0000]
+G0: 0190 0000
+T0: 0000 02E9 [000F]
+Jump to BL
+
+UNIVPLL_CON0 = 0xFE000000!!!
+mt_pll_init: Set pll frequency for 25M crystal
+[PMIC_WRAP]wrap_init pass,the return value=0.
+[pmic_init] Preloader Start..................
+[pmic_init] MT6380 CHIP Code, reg_val = 0, 1:E2  0:E3
+[pmic_init] Done...................
+Chip part number:7622B
+MT7622 Version: 1.2.8, (iPA)
+SSC OFF
+mt_pll_post_init: mt_get_cpu_freq = 1350000Khz
+mt_pll_post_init: mt_get_mem_freq = 1600000Khz
+mt_pll_post_init: mt_get_bus_freq = 279980Khz
+[PLFM] Init I2C: OK(0)
+
+[BLDR] Build Time: 20210322-195346
+==== Dump RGU Reg ========
+RGU MODE:     4D
+RGU LENGTH:   FFE0
+RGU STA:      0
+RGU INTERVAL: FFF
+RGU SWSYSRST: 8000
+==== Dump RGU Reg End ====
+RGU: g_rgu_satus:0
+ mtk_wdt_mode_config  mode value=10, tmp:22000010
+PL P ON
+WDT does not trigger reboot
+WDT NONRST=0x20000000
+WDT IRQ_EN=0x340003
+RGU mtk_wdt_init:MTK_WDT_DEBUG_CTL(590200F3)
+[EMI] MDL number = 2
+[EMI] DRAMC calibration start
+
+[EMI] DRAMC calibration end
+
+[EMI]rank size auto detect
+[EMI]start_addr[0x40000000]=0x12345678, test_addr[0x48000000]= 0xEDCBA987
+[EMI]start_addr[0x40000000]=0xEDCBA987, test_addr[0x50000000]= 0xEDCBA987
+[EMI]rank0 size: 0x10000000
+[MEM] complex R/W mem test pass
+RAM_CONSOLE wdt status (0x0)=0x0
+Flash Index: 0, MenuID: 0xEF, DevID1: 0x40, DevID2: 0x18
+Setup flash information successful, support list index: 41
+Roger debug: size=1000000, flash_num=1
+Flash #0: write protect disable successfully!
+Flash #0: write protect enable successfully
+size = 1000000, exit 4 byte mode
+[PLFM] Init Boot Device: OK(0)
+
+[PART] blksz: 1B
+[PART] [0x0000000000000000-0x000000000003FFFF] "PRELOADER" (262144 blocks)
+[PART] [0x0000000000040000-0x000000000005FFFF] "tee1" (131072 blocks)
+[PART] [0x0000000000060000-0x000000000009FFFF] "lk" (262144 blocks)
+
+Device APC domain init setup:
+
+Domain Setup (0x0)
+Domain Setup (0x0)
+Device APC domain after setup:
+Domain Setup (0x0)
+Domain Setup (0x0)
+[PART] Image with part header
+[PART] name : U-Boot
+[PART] addr : 41E00000h mode : -1
+[PART] size : 259036
+[PART] magic: 58881688h
+
+[PART] load "lk" from 0x0000000000060200 (dev) to 0x41E00000 (mem) [SUCCESS]
+[PART] load speed: 615KB/s, 259036 bytes, 411ms
+load lk (ret=0)
+[PART] Image with part header
+[PART] name : atf
+[PART] addr : FFFFFFFFh mode : -1
+[PART] size : 57936
+[PART] magic: 58881688h
+
+[PART] load "tee1" from 0x0000000000040200 (dev) to 0x43000DC0 (mem) [SUCCESS]
+[PART] load speed: 614KB/s, 57936 bytes, 92ms
+load tee1 (ret=0)
+[BLDR] bldr load tee part ret=0x0, addr=0x43001000
+[BLDR] boot part. not found
+[BLDR] part_load_images ret=0x0
+[BLDR] Others, jump to ATF
+
+[BLDR] jump to 0x41E00000
+[BLDR] <0x41E00000>=0xEA00000F
+[BLDR] <0x41E00004>=0xE59FF014
+
+
+U-Boot 2014.04-rc1-svn424 (Mar 08 2021 - 20:14:08)
+
+auto detection g_total_rank_size = 0x F000000
+DRAM:  240 MiB
+NOR:  Flash Index: 0, MenuID: ef, DevID1: 40, DevID2: 18
+Setup flash information successful, support list index: 41
+Roger debug: size=1000000, flash_num=1
+Flash #0: write protect disable successfully!
+Flash #0: write protect enable successfully
+size = 1000000, exit 4 byte mode
+In:    serial
+Out:   serial
+Err:   serial
+Net:   mtk_eth
+Uip activated
+product info crc check success 74362f81
+Saving Environment to SPI NOR Flash...
+Erasing SPI NOR flash...mtk_nor_erase addr=0xb0000,len=0x20000
+erase part flash#0 successful!
+erase part flash#0 successful!
+Writing to SPI NOR flash...done
+
+please press CTRL+T to enter ddr test menu !!!
+
+  *** U-Boot SPI NOR ***
+
+     1. System Load Linux to SDRAM via TFTP.
+     2. System Load Linux firmware then write to Flash via TFTP.
+     3. Boot system code via Flash.
+     4. System Load U-Boot then write to Flash via TFTP.
+     5. System Load U-Boot then write to Flash via Serial.
+     6. System Load ATF then write to Flash via TFTP.
+     7. System Load Preloader then write to Flash via TFTP.
+     8. System Load ROM header then write to Flash via TFTP.
+     9. System Load CTP then write to Flash via TFTP.
+     a. System Load CTP then Boot to CTP (via Flash).
+     b. System Load SingleImage then write to Flash via TFTP.
+     U-Boot console
+
+
+  Press UP/DOWN to move or Press 1~9,a~b to choose, ENTER to select
+read len: 8192
+[do_read_image_blks] This is a FIT image,img_size = 0x1e96d8
+[do_read_image_blks] img_blks = 0x1e96d8
+[do_read_image_blks] img_align_size = 0x1e96d8
+read len: 2004696
+bootm flag=0, states=70f
+## Loading kernel from FIT Image at 4007ff28 ...
+   Using 'config@1' configuration
+   Trying 'kernel@1' kernel subimage
+     Description:  ARM64 OpenWrt Linux-4.4.198
+     Type:         Kernel Image
+     Compression:  lzma compressed
+     Data Start:   0x40080010
+     Data Size:    1971751 Bytes = 1.9 MiB
+     Architecture: AArch64
+     OS:           Linux
+     Load Address: 0x41080000
+     Entry Point:  0x41080000
+     Hash algo:    crc32
+     Hash value:   8b6beb89
+     Hash algo:    sha1
+     Hash value:   06174ea0ef969b7c70baa5d88e656d875dddd810
+   Verifying Hash Integrity ... crc32+ sha1+ OK
+## Loading fdt from FIT Image at 4007ff28 ...
+   Using 'config@1' configuration
+   Trying 'fdt@1' fdt subimage
+     Description:  ARM64 OpenWrt X32-PRO device tree blob
+     Type:         Flat Device Tree
+     Compression:  uncompressed
+     Data Start:   0x40261770
+     Data Size:    31065 Bytes = 30.3 KiB
+     Architecture: AArch64
+     Hash algo:    crc32
+     Hash value:   657feb48
+     Hash algo:    sha1
+     Hash value:   13c4456808ec903b824743800bec776df4afc95c
+   Verifying Hash Integrity ... crc32+ sha1+ OK
+   Booting using the fdt blob at 0x40261770
+   Uncompressing Kernel Image ... OK
+   Loading Device Tree to 4cf43000, end 4cf4d958 ... OK
+
+Starting kernel ...
+
+[ATF][     4.031060]save kernel info
+[ATF][     4.033996]Kernel_EL2
+[ATF][     4.036666]Kernel is 64Bit
+[ATF][     4.039754]pc=0x41080000, r0=0x4cf43000, r1=0x0
+INFO:    BL3-1: Preparing for EL3 exit to normal world, Kernel
+INFO:    BL3-1: Next image address = 0x41080000
+INFO:    BL3-1: Next image spsr = 0x3c9
+[ATF][     4.057452]el3_exit
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 4.4.198 (ngcf@ngcf96) (gcc version 7.3.0 (OpenWrt GCC 7.3.0 unknown) ) #0 SMP Wed Jul 7 06:26:54 2021
+[    0.000000] Boot CPU: AArch64 Processor [410fd034]
+[    0.000000] On node 0 totalpages: 65488
+[    0.000000]   DMA zone: 1024 pages used for memmap
+[    0.000000]   DMA zone: 0 pages reserved
+[    0.000000]   DMA zone: 65488 pages, LIFO batch:15
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv0.2 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS migration not required
+[    0.000000] PERCPU: Embedded 18 pages/cpu @ffffffc00ffa7000 s34968 r8192 d30568 u73728
+[    0.000000] pcpu-alloc: s34968 r8192 d30568 u73728 alloc=18*4096
+[    0.000000] pcpu-alloc: [0] 0 [0] 1
+[    0.000000] Detected VIPT I-cache on CPU0
+[    0.000000] CPU features: enabling workaround for ARM erratum 845719
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 64464
+[    0.000000] Kernel command line: console=ttyS0,115200n1 loglevel=8 swiotlb=512                               rootfstype=squashfs
+[    0.000000] PID hash table entries: 1024 (order: 1, 8192 bytes)
+[    0.000000] Dentry cache hash table entries: 32768 (order: 6, 262144 bytes)
+[    0.000000] Inode-cache hash table entries: 16384 (order: 5, 131072 bytes)
+[    0.000000] software IO TLB: mapped [mem 0x4fe47000-0x4ff47000] (1MB)
+[    0.000000] Memory: 249784K/261952K available (3820K kernel code, 342K rwdata, 1312K rodata, 280K init, 438K bss, 12168K reserved, 0K cma-reserved)
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     modules : 0xffffff8000000000 - 0xffffff8008000000   (   128 MB)
+[    0.000000]     vmalloc : 0xffffff8008000000 - 0xffffffbdbfff0000   (   246 GB)
+[    0.000000]       .init : 0xffffff8008587000 - 0xffffff80085cd000   (   280 KB)
+[    0.000000]       .text : 0xffffff8008080000 - 0xffffff800843c000   (  3824 KB)
+[    0.000000]     .rodata : 0xffffff800843c000 - 0xffffff8008587000   (  1324 KB)
+[    0.000000]       .data : 0xffffff80085cd000 - 0xffffff8008622a78   (   343 KB)
+[    0.000000]     fixed   : 0xffffffbffe7fb000 - 0xffffffbffec00000   (  4116 KB)
+[    0.000000]     PCI I/O : 0xffffffbffee00000 - 0xffffffbfffe00000   (    16 MB)
+[    0.000000]     memory  : 0xffffffc000000000 - 0xffffffc010000000   (   256 MB)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1
+[    0.000000] Hierarchical RCU implementation.
+[    0.000000]  Build-time adjustment of leaf fanout to 64.
+[    0.000000] NR_IRQS:64 nr_irqs:64 0
+[    0.000000] Architected cp15 timer(s) running at 12.50MHz (phys).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x2e2049cda, max_idle_ns: 440795202628 ns
+[    0.000003] sched_clock: 56 bits at 12MHz, resolution 80ns, wraps every 4398046511080ns
+[    0.000055] clocksource: timer: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 191126102035 ns
+[    0.000230] Console: colour dummy device 80x25
+[    0.000244] Calibrating delay loop (skipped), value calculated using timer frequency.. 25.00 BogoMIPS (lpj=50000)
+[    0.000252] pid_max: default: 32768 minimum: 301
+[    0.000302] Mount-cache hash table entries: 512 (order: 0, 4096 bytes)
+[    0.000307] Mountpoint-cache hash table entries: 512 (order: 0, 4096 bytes)
+[    0.000752] sched-energy: CPU device node has no sched-energy-costs
+[    0.000758] Invalid sched_group_energy for CPU0
+[    0.000762] CPU0: update cpu_capacity 1024
+[    0.000788] ASID allocator initialised with 32768 entries
+[    0.001567] Detected VIPT I-cache on CPU1
+[    0.001596] Invalid sched_group_energy for CPU1
+[    0.001598] CPU1: update cpu_capacity 1024
+[    0.001600] CPU1: Booted secondary processor [410fd034]
+[    0.001637] Brought up 2 CPUs
+[    0.001648] SMP: Total of 2 processors activated.
+[    0.001654] CPU features: detected feature: 32-bit EL0 Support
+[    0.001659] CPU: All CPU(s) started at EL2
+[    0.001671] alternatives: patching kernel code
+[    0.001739] Invalid sched_group_energy for CPU1
+[    0.001743] Invalid sched_group_energy for Cluster1
+[    0.001746] Invalid sched_group_energy for CPU0
+[    0.001750] Invalid sched_group_energy for Cluster0
+[    0.005840] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.005857] futex hash table entries: 512 (order: 4, 65536 bytes)
+[    0.005984] pinctrl core: initialized pinctrl subsystem
+[    0.006485] NET: Registered protocol family 16
+[    0.006915] [SPM] spm_base = ffffff8008026000
+[    0.006920] [SPM] spm_irq_0 = 6, spm_irq_1 = 7
+[    0.006924] [SPM] spm_irq_2 = 8, spm_irq_3 = 9
+[    0.006926] [SPM] set spm as wakeup devcie.
+[    0.006931] [SPM] spm_rtc cnt: 24414.
+[    0.015996] cpuidle: using governor menu
+[    0.016031] vdso: 2 pages (1 code @ ffffff8008441000, 1 data @ ffffff80085d4000)
+[    0.016165] DMA: preallocated 256 KiB pool for atomic allocations
+[    0.016230] Serial: AMBA PL011 UART driver
+[    0.016280] [SPM] PWAKE_EN:1, PCMWDT_EN:0, BYPASS_SYSPWREQ:0, I2C_CHANNEL:2
+[    0.016285] [SLP] SLEEP_DPIDLE_EN:1, REPLACE_DEF_WAKESRC:0, SUSPEND_LOG_EN:1
+[    0.037252] vgaarb: loaded
+[    0.038278] rbus 18000000.wbsys: PCI host bridge to bus 0000:00
+[    0.038291] pci_bus 0000:00: root bus resource [mem 0x18000000-0x180fffff]
+[    0.038299] pci_bus 0000:00: root bus resource [bus 00-ff]
+[    0.038318] pci 0000:00:00.0: [14c3:7622] type 00 class 0x000280
+[    0.038334] pci 0000:00:00.0: reg 0x10: [mem 0x18000000-0x1800000f 64bit]
+[    0.038341] pci 0000:00:00.0: reg 0x18: [mem 0x00000000-0x0000000f]
+[    0.038347] pci 0000:00:00.0: reg 0x1c: [mem 0x00000000-0x0000000f]
+[    0.038354] pci 0000:00:00.0: reg 0x20: [mem 0x00000000-0x0000000f]
+[    0.038360] pci 0000:00:00.0: reg 0x24: [mem 0x00000000-0x0000000f]
+[    0.038387] pci 0000:00:00.0: of_irq_parse_pci() failed with rc=-22
+[    0.038668] clocksource: Switched to clocksource arch_sys_counter
+[    0.042516] NET: Registered protocol family 2
+[    0.042834] TCP established hash table entries: 2048 (order: 2, 16384 bytes)
+[    0.042855] TCP bind hash table entries: 2048 (order: 3, 32768 bytes)
+[    0.042886] TCP: Hash tables configured (established 2048 bind 2048)
+[    0.042933] UDP hash table entries: 256 (order: 1, 8192 bytes)
+[    0.042946] UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)
+[    0.043041] NET: Registered protocol family 1
+[    0.043074] PCI: CLS 0 bytes, default 128
+[    0.049239] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.049254] jffs2: version 2.2 (NAND) (SUMMARY) (LZMA) (CMODE_PRIORITY) (c) 2001-2006 Red Hat, Inc.
+[    0.050182] io scheduler noop registered
+[    0.050354] io scheduler cfq registered (default)
+[    0.080520] mtk-pcie 1a143000.pcie: pcie rc 0 linkup success
+[    0.080641] mtk-pcie 1a143000.pcie: PCI host bridge to bus 0001:00
+[    0.080653] pci_bus 0001:00: root bus resource [??? 0x00000000 flags 0x0]
+[    0.080659] pci_bus 0001:00: root bus resource [mem 0x20000000-0x27ffffff]
+[    0.080667] pci_bus 0001:00: root bus resource [bus 00-ff]
+[    0.080702] pci 0001:00:00.0: [14c3:5396] type 01 class 0x060400
+[    0.080755] pci 0001:00:00.0: reg 0x10: [mem 0x00000000-0xffffffff 64bit pref]
+[    0.080872] pci 0001:00:00.0: of_irq_parse_pci() failed with rc=-22
+[    0.080982] pci 0001:00:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
+[    0.081190] pci 0001:01:00.0: [14c3:7915] type 00 class 0x000280
+[    0.081495] pci 0001:01:00.0: reg 0x10: [mem 0x00000000-0x000fffff 64bit pref]
+[    0.081608] pci 0001:01:00.0: reg 0x18: [mem 0x00000000-0x00003fff 64bit pref]
+[    0.081721] pci 0001:01:00.0: reg 0x20: [mem 0x00000000-0x00000fff 64bit pref]
+[    0.082236] pci 0001:01:00.0: supports D1 D2
+[    0.082241] pci 0001:01:00.0: PME# supported from D0 D1 D2 D3hot D3cold
+[    0.086743] pci_bus 0001:01: busn_res: [bus 01-ff] end is updated to 01
+[    0.086781] pci 0001:00:00.0: BAR 0: no space for [mem size 0xffffffff 64bit pref]
+[    0.086787] pci 0001:00:00.0: BAR 0: failed to assign [mem size 0xffffffff 64bit pref]
+[    0.086794] pci 0001:00:00.0: BAR 8: assigned [mem 0x20000000-0x201fffff]
+[    0.086803] pci 0001:01:00.0: BAR 0: assigned [mem 0x20000000-0x200fffff 64bit pref]
+[    0.086894] pci 0001:01:00.0: BAR 2: assigned [mem 0x20100000-0x20103fff 64bit pref]
+[    0.086984] pci 0001:01:00.0: BAR 4: assigned [mem 0x20104000-0x20104fff 64bit pref]
+[    0.087073] pci 0001:00:00.0: PCI bridge to [bus 01]
+[    0.087084] pci 0001:00:00.0:   bridge window [mem 0x20000000-0x201fffff]
+[    0.087138] pcieport 0001:00:00.0: of_irq_parse_pci() failed with rc=-22
+[    0.087153] pcieport 0001:00:00.0: enabling device (0000 -> 0002)
+[    0.087313] pcieport 0001:00:00.0: Signaling PME through PCIe PME interrupt
+[    0.087319] pci 0001:01:00.0: Signaling PME through PCIe PME interrupt
+[    0.087328] pcie_pme 0001:00:00.0:pcie01: service driver pcie_pme loaded
+[    0.188177] mtk-pcie 1a145000.pcie: Port1 link down
+[    0.188286] mtk-pcie 1a145000.pcie: PCI host bridge to bus 0002:00
+[    0.188293] pci_bus 0002:00: root bus resource [??? 0x00000000 flags 0x0]
+[    0.188299] pci_bus 0002:00: root bus resource [mem 0x28000000-0x2fffffff]
+[    0.188306] pci_bus 0002:00: root bus resource [bus 00-ff]
+[    0.190111] Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+[    0.190888] console [ttyS0] disabled
+[    0.211035] 11002000.serial: ttyS0 at MMIO 0x11002000 (irq = 232, base_baud = 1562500) is a ST16650V2
+[    1.052867] console [ttyS0] enabled
+[    1.057022] Unable to detect cache hierarchy for CPU 0
+[    1.062481] dump_power_table[0] = { .cpufreq_khz = 1350000,  .cpufreq_ncpu = 2,      .cpufreq_power = 995 }
+[    1.071700] dump_power_table[1] = { .cpufreq_khz = 1262500,  .cpufreq_ncpu = 2,      .cpufreq_power = 811 }
+[    1.080915] dump_power_table[2] = { .cpufreq_khz = 1137500,  .cpufreq_ncpu = 2,      .cpufreq_power = 736 }
+[    1.090128] dump_power_table[3] = { .cpufreq_khz = 1025000,  .cpufreq_ncpu = 2,      .cpufreq_power = 624 }
+[    1.099343] dump_power_table[4] = { .cpufreq_khz = 1350000,  .cpufreq_ncpu = 1,      .cpufreq_power = 517 }
+[    1.108556] dump_power_table[5] = { .cpufreq_khz = 812500,   .cpufreq_ncpu = 2,      .cpufreq_power = 492 }
+[    1.117683] dump_power_table[6] = { .cpufreq_khz = 1262500,  .cpufreq_ncpu = 1,      .cpufreq_power = 377 }
+[    1.126898] dump_power_table[7] = { .cpufreq_khz = 600000,   .cpufreq_ncpu = 2,      .cpufreq_power = 376 }
+[    1.136026] dump_power_table[8] = { .cpufreq_khz = 1137500,  .cpufreq_ncpu = 1,      .cpufreq_power = 333 }
+[    1.145239] dump_power_table[9] = { .cpufreq_khz = 437500,   .cpufreq_ncpu = 2,      .cpufreq_power = 295 }
+[    1.154366] dump_power_table[10] = { .cpufreq_khz = 1025000, .cpufreq_ncpu = 1,      .cpufreq_power = 258 }
+[    1.163666] dump_power_table[11] = { .cpufreq_khz = 300000,  .cpufreq_ncpu = 2,      .cpufreq_power = 225 }
+[    1.172880] dump_power_table[12] = { .cpufreq_khz = 812500,  .cpufreq_ncpu = 1,      .cpufreq_power = 204 }
+[    1.182093] dump_power_table[13] = { .cpufreq_khz = 600000,  .cpufreq_ncpu = 1,      .cpufreq_power = 166 }
+[    1.191306] dump_power_table[14] = { .cpufreq_khz = 437500,  .cpufreq_ncpu = 1,      .cpufreq_power = 140 }
+[    1.200519] dump_power_table[15] = { .cpufreq_khz = 300000,  .cpufreq_ncpu = 1,      .cpufreq_power = 119 }
+[    1.210327] mtk-nor 11014000.spi: w25q128 (16384 Kbytes)
+[    1.215733] 8 ofpart partitions found on MTD device mtk_nor
+[    1.221325] Creating 8 MTD partitions on "mtk_nor":
+[    1.226202] 0x000000000000-0x000000040000 : "Preloader"
+[    1.231918] 0x000000040000-0x000000060000 : "ATF"
+[    1.237038] 0x000000060000-0x0000000b0000 : "u-boot"
+[    1.242407] 0x0000000b0000-0x0000000d0000 : "u-boot-env"
+[    1.248141] 0x0000000d0000-0x000000150000 : "Factory"
+[    1.253617] 0x000000150000-0x000000160000 : "product_info"
+[    1.259520] 0x000000160000-0x000000170000 : "kdump"
+[    1.264803] 0x000000170000-0x000001000000 : "firmware"
+[    1.270793] 2 fit-fw partitions found on MTD device firmware
+[    1.276457] 0x000000170000-0x000000360000 : "kernel"
+[    1.281840] 0x000000370000-0x000001000000 : "rootfs"
+[    1.287209] mtd: device 9 (rootfs) set to be root filesystem
+[    1.293029] 1 squashfs-split partitions found on MTD device rootfs
+[    1.299217] 0x000000f30000-0x000001000000 : "rootfs_data"
+[    1.305537] libphy: Fixed MDIO Bus: probed
+[    1.309996] sean debug physpeed = 2500
+[    1.347556] libphy: mdio: probed
+[    1.350810] mtk_soc_eth 1b100000.ethernet: generated random MAC address c2:ee:0d:2c:9b:c5
+[    1.359139] mtk_soc_eth 1b100000.ethernet: connected mac 0 to PHY at fixed-0:00 [uid=00000000, driver=Generic PHY]
+[    1.369787] mtk_soc_eth 1b100000.ethernet eth0: mediatek frame engine at 0xffffff8008700000, irq 250
+[    1.378919] netif_napi_add() called with weight 256 on device
+[    1.384836] PPP generic driver version 2.4.2
+[    1.389198] PPP MPPE Compression module registered
+[    1.394208] ========STA INIT=============
+[    1.398230] MTK NETLINK SUCCESS!!!!!
+[    1.401807] [WASK][wask_init][306]Netlink WASK Module inserted.
+[    1.407726] [WASK][wask_init][320]WASK NETLINK SUCCESS!!!!!
+[    1.413584] MTK_WDT_NONRST_REG(20000000)
+[    1.417675] mtk-wdt 10212000.watchdog: register restart_handler on reboot_notifier_list for psci reset
+[    1.426979] mtk-wdt 10212000.watchdog: Watchdog enabled (timeout=31 sec, nowayout=0)
+[    1.434895] register cpuidle driver!!!!!!!!!!!!!!!!!
+[    1.440471] creat color led  meshled success
+[    1.445079] nf_conntrack version 0.5.0 (4096 buckets, 16384 max)
+[    1.451362] ipip: IPv4 over IPv4 tunneling driver
+[    1.456377] gre: GRE over IPv4 demultiplexor driver
+[    1.461256] ip_gre: GRE over IPv4 tunneling driver
+[    1.466961] NET: Registered protocol family 10
+[    1.472084] NET: Registered protocol family 17
+[    1.476562] bridge: automatic filtering via arp/ip/ip6tables has been deprecated. Update your scripts to load br_netfilter if you need this.
+[    1.489186] 8021q: 802.1Q VLAN Support v1.8
+[    2.030984] mt753x gsw@0: Switch is MediaTek MT7531BE rev 1
+[    2.041037] mt753x gsw@0: HWSTRAP=0xff XTAL=25MHz
+[    2.048728] mt753x gsw@0: Speed select reg[0x6128]= 0x14817
+[    2.054498] mt753x gsw@0: AN reg[0x6000]= 0x80140 disable auto-an
+[    2.320917] random: nonblocking pool is initialized
+[    2.358686] mtk_soc_eth 1b100000.ethernet: path gmac1_sgmii in set_mux_gdm1_to_gmac1_esw updated = 1
+[    2.367819] mtk_soc_eth 1b100000.ethernet: mux mux_gmac2_gmac0_to_gephy isn't present on the SoC
+[    2.376600] mtk_soc_eth 1b100000.ethernet: mux mux_u3_gmac2_to_qphy isn't present on the SoC
+[    2.385038] mtk_soc_eth 1b100000.ethernet: path gmac1_sgmii in set_mux_gmac1_gmac2_to_sgmii_rgmii updated = 1
+[    2.394949] mtk_soc_eth 1b100000.ethernet: mux mux_gmac12_to_gephy_sgmii isn't present on the SoC
+[    2.406905] mt753x gsw@0: Port 5 Link is Up mode[7-rgmii]- 1Gbps/Full
+[    2.413563] mt753x gsw@0: Port 6 Link is Up mode[3-sgmii]- 2.5Gbps/Full
+[    2.420278] libphy: mt753x_mdio: probed
+[    2.703515] mt753x gsw@0: >>>>>>>>>>>>>>>>>>>>>>>>>>>>> START CALIBRATION:
+[    2.711651] mt753x gsw@0: -------- gephy-calbration (port:0) --------
+[    2.724692] CALDLY = 40
+[    2.768036] 0x1e-e0 = 2828
+[    2.771999] 0x1f-115 = 5
+[    2.774522]   GE Rext AnaCal Done! (8)(0x28)
+[    2.822014]  GE R50 AnaCal Done! (11) (0x31)(0xb1)
+[    2.867773]  GE R50 AnaCal Done! (11) (0x31)(0xb1)
+[    2.913580]  GE R50 AnaCal Done! (11) (0x31)(0xb1)
+[    2.965666]  GE R50 AnaCal Done! (13) (0x26)(0xa6)
+[    2.973249]  GE 1e_174(0xb1b1), 1e_175(0xb1a6)
+[    3.010599]  GE Tx offset AnaCal Done! (pair-0)(6)(0x25) 0x1e_172=0x2520
+[    3.039302]  GE Tx offset AnaCal Done! (pair-1)(5)(0x24) 0x1e_172=0x2524
+[    3.055395]  GE Tx offset AnaCal Done! (pair-2)(1)(0x1) 0x1e_173=0x120
+[    3.077590]  GE Tx offset AnaCal Done! (pair-3)(3)(0x22) 0x1e_173=0x122
+[    3.134412]  GE Tx amp AnaCal Done! (pair-0)(1e_12 = 0x6c1b)(0x23)
+[    3.185496]  GE Tx amp AnaCal Done! (pair-1)(1e_17 = 0x1f1f)(0x27)
+[    3.253992]  GE Tx amp AnaCal Done! (pair-2)(1e_19 = 0x232b)(0x2b)
+[    3.311508]  GE Tx amp AnaCal Done! (pair-3)(1e_21 = 0x2129)(0x29)
+[    3.340267] PORT 0 RX_DC_OFFSET
+[    3.348908] before pairA output = 1d
+[    3.353841] after pairA output = ff
+[    3.358606] before pairB output = 1e
+[    3.363541] after pairB output = 0
+[    3.368226] before pairC output = 1e
+[    3.373160] after pairC output = 0
+[    3.377843] before pairD output = 1e
+[    3.382774] after pairD output = 1
+[    3.386465] mt753x gsw@0: -------- gephy-calbration (port:1) --------
+[    3.399544] CALDLY = 40
+[    3.449634]  GE R50 AnaCal Done! (13) (0x26)(0xa6)
+[    3.499226]  GE R50 AnaCal Done! (12) (0x30)(0xb0)
+[    3.545566]  GE R50 AnaCal Done! (11) (0x31)(0xb1)
+[    3.591817]  GE R50 AnaCal Done! (11) (0x31)(0xb1)
+[    3.599440]  GE 1e_174(0xa6b0), 1e_175(0xb1b1)
+[    3.637332]  GE Tx offset AnaCal Done! (pair-0)(6)(0x25) 0x1e_172=0x2520
+[    3.669485]  GE Tx offset AnaCal Done! (pair-1)(6)(0x25) 0x1e_172=0x2525
+[    3.688919]  GE Tx offset AnaCal Done! (pair-2)(2)(0x21) 0x1e_173=0x2120
+[    3.705152]  GE Tx offset AnaCal Done! (pair-3)(1)(0x1) 0x1e_173=0x2101
+[    3.758803]  GE Tx amp AnaCal Done! (pair-0)(1e_12 = 0x6c1b)(0x23)
+[    3.821646]  GE Tx amp AnaCal Done! (pair-1)(1e_17 = 0x2323)(0x2b)
+[    3.872142]  GE Tx amp AnaCal Done! (pair-2)(1e_19 = 0x1f27)(0x27)
+[    3.949142]  GE Tx amp AnaCal Done! (pair-3)(1e_21 = 0x262e)(0x2e)
+[    3.977999] PORT 1 RX_DC_OFFSET
+[    3.986646] before pairA output = 1e
+[    3.991559] after pairA output = 0
+[    3.996238] before pairB output = f
+[    4.001079] after pairB output = 0
+[    4.005715] before pairC output = f
+[    4.010550] after pairC output = 0
+[    4.015219] before pairD output = f
+[    4.020056] after pairD output = ff
+[    4.023837] mt753x gsw@0: -------- gephy-calbration (port:2) --------
+[    4.036929] CALDLY = 40
+[    4.077212]  GE R50 AnaCal Done! (10) (0x32)(0xb2)
+[    4.120035]  GE R50 AnaCal Done! (10) (0x32)(0xb2)
+[    4.162904]  GE R50 AnaCal Done! (10) (0x32)(0xb2)
+[    4.202763]  GE R50 AnaCal Done! (9) (0x34)(0xb4)
+[    4.210287]  GE 1e_174(0xb2b2), 1e_175(0xb2b4)
+[    4.247982]  GE Tx offset AnaCal Done! (pair-0)(6)(0x25) 0x1e_172=0x2520
+[    4.273593]  GE Tx offset AnaCal Done! (pair-1)(4)(0x23) 0x1e_172=0x2523
+[    4.292953]  GE Tx offset AnaCal Done! (pair-2)(2)(0x2) 0x1e_173=0x220
+[    4.318315]  GE Tx offset AnaCal Done! (pair-3)(4)(0x23) 0x1e_173=0x223
+[    4.371805]  GE Tx amp AnaCal Done! (pair-0)(1e_12 = 0x701c)(0x24)
+[    4.404307]  GE Tx amp AnaCal Done! (pair-1)(1e_17 = 0x1414)(0x1c)
+[    4.435718]  GE Tx amp AnaCal Done! (pair-2)(1e_19 = 0x1b23)(0x23)
+[    4.470975]  GE Tx amp AnaCal Done! (pair-3)(1e_21 = 0x1b23)(0x23)
+[    4.499674] PORT 2 RX_DC_OFFSET
+[    4.508286] before pairA output = 1c
+[    4.513215] after pairA output = ff
+[    4.517975] before pairB output = f
+[    4.522813] after pairB output = ff
+[    4.527534] before pairC output = e
+[    4.532376] after pairC output = 1
+[    4.537048] before pairD output = f
+[    4.541887] after pairD output = 0
+[    4.545582] mt753x gsw@0: -------- gephy-calbration (port:3) --------
+[    4.558686] CALDLY = 40
+[    4.598921]  GE R50 AnaCal Done! (10) (0x32)(0xb2)
+[    4.638647]  GE R50 AnaCal Done! (9) (0x34)(0xb4)
+[    4.678379]  GE R50 AnaCal Done! (9) (0x34)(0xb4)
+[    4.718020]  GE R50 AnaCal Done! (9) (0x34)(0xb4)
+[    4.725538]  GE 1e_174(0xb2b4), 1e_175(0xb4b4)
+[    4.753543]  GE Tx offset AnaCal Done! (pair-0)(3)(0x22) 0x1e_172=0x2220
+[    4.785577]  GE Tx offset AnaCal Done! (pair-1)(6)(0x25) 0x1e_172=0x2225
+[    4.808086]  GE Tx offset AnaCal Done! (pair-2)(3)(0x3) 0x1e_173=0x320
+[    4.836730]  GE Tx offset AnaCal Done! (pair-3)(5)(0x24) 0x1e_173=0x324
+[    4.878943]  GE Tx amp AnaCal Done! (pair-0)(1e_12 = 0x5c17)(0x1f)
+[    4.915205]  GE Tx amp AnaCal Done! (pair-1)(1e_17 = 0x1c1c)(0x24)
+[    4.946600]  GE Tx amp AnaCal Done! (pair-2)(1e_19 = 0x1b23)(0x23)
+[    4.970550]  GE Tx amp AnaCal Done! (pair-3)(1e_21 = 0x1921)(0x21)
+[    4.999118] PORT 3 RX_DC_OFFSET
+[    5.007708] before pairA output = 1e
+[    5.012634] after pairA output = 1
+[    5.017305] before pairB output = 1e
+[    5.022230] after pairB output = ff
+[    5.026992] before pairC output = 1e
+[    5.031913] after pairC output = ff
+[    5.036666] before pairD output = 1d
+[    5.041589] after pairD output = ff
+[    5.045371] mt753x gsw@0: -------- gephy-calbration (port:4) --------
+[    5.058373] CALDLY = 40
+[    5.095571]  GE R50 AnaCal Done! (9) (0x34)(0xb4)
+[    5.135171]  GE R50 AnaCal Done! (9) (0x34)(0xb4)
+[    5.174859]  GE R50 AnaCal Done! (9) (0x34)(0xb4)
+[    5.217645]  GE R50 AnaCal Done! (10) (0x32)(0xb2)
+[    5.225256]  GE 1e_174(0xb4b4), 1e_175(0xb4b2)
+[    5.253438]  GE Tx offset AnaCal Done! (pair-0)(3)(0x22) 0x1e_172=0x2220
+[    5.288544]  GE Tx offset AnaCal Done! (pair-1)(7)(0x26) 0x1e_172=0x2226
+[    5.317287]  GE Tx offset AnaCal Done! (pair-2)(5)(0x24) 0x1e_173=0x2420
+[    5.349270]  GE Tx offset AnaCal Done! (pair-3)(6)(0x25) 0x1e_173=0x2425
+[    5.391478]  GE Tx amp AnaCal Done! (pair-0)(1e_12 = 0x5c17)(0x1f)
+[    5.420110]  GE Tx amp AnaCal Done! (pair-1)(1e_17 = 0x1919)(0x21)
+[    5.447862]  GE Tx amp AnaCal Done! (pair-2)(1e_19 = 0x161e)(0x1e)
+[    5.471734]  GE Tx amp AnaCal Done! (pair-3)(1e_21 = 0x171f)(0x1f)
+[    5.500392] PORT 4 RX_DC_OFFSET
+[    5.509000] before pairA output = e
+[    5.513840] after pairA output = 0
+[    5.518514] before pairB output = f
+[    5.523340] after pairB output = fe
+[    5.528099] before pairC output = f
+[    5.532940] after pairC output = 0
+[    5.537615] before pairD output = e
+[    5.542458] after pairD output = 0
+[    5.548429] [SPM] pwrap node has not register regmap
+[    5.553551] [SVS] cannot get svs_calibration from device tree
+[    5.573254] VFS: Mounted root (squashfs filesystem) readonly on device 31:9.
+[    5.580451] Freeing unused kernel memory: 280K
+[    5.584900] This architecture does not have kernel memory protection.
+[    6.512978] mt753x gsw@0: Port 0 Link is Up - 1Gbps/Full
+[    7.212897] init: Console is alive
+[    7.216400] init: - watchdog -
+[   11.632074] kmodloader: loading kernel modules from /etc/modules-boot.d/*
+[   11.681479] before nf_register_hooks
+[   11.685122] insmod dns_ops ok!
+[   11.688182] insmod br_dns_ops ok!
+[   11.691584] kmodloader: done loading kernel modules from /etc/modules-boot.d/*
+[   11.708978] init: - preinit -
+[   14.714042] mount_root: deadc0de tocpu value=0x85190320
+[   14.719417] mount_root: deadc0de tocpu value=0x85190320
+[   14.915616] mount_root: deadc0de tocpu value=0x85190320
+[   14.920868] mount_root: switching to jffs2 overlay
+[   14.999862] mount_root: mount_root done begin!
+[   15.005807] mount_root: deadc0de tocpu value=0x85190320
+[   15.011072] mount_root: mount_root done end!
+[   15.160587] procd: - early -
+[   15.163544] procd: - watchdog -
+[   15.801862] procd: - watchdog -
+[   15.805131] procd: - ubus -
+[   15.862180] procd: - init -
+[   17.087855] kmodloader: loading kernel modules from /etc/modules.d/*
+[   17.097341] mediatek_soc_hnat 1b100000.hnat: wan = eth0.1
+[   17.102785] mediatek_soc_hnat 1b100000.hnat: lan = eth0
+[   17.108023] mediatek_soc_hnat 1b100000.hnat: ppd = eth0.233
+[   17.113598] mediatek_soc_hnat 1b100000.hnat: gmac num = 1
+[   17.119117] mediatek_soc_hnat 1b100000.hnat: ext devices = rai0
+[   17.125039] mediatek_soc_hnat 1b100000.hnat: ext devices = ra0
+[   17.130874] mediatek_soc_hnat 1b100000.hnat: ext devices = rai1
+[   17.136795] mediatek_soc_hnat 1b100000.hnat: ext devices = ra1
+[   17.142645] mediatek_soc_hnat 1b100000.hnat: ext devices = rai2
+[   17.148564] mediatek_soc_hnat 1b100000.hnat: ext devices = ra2
+[   17.154398] mediatek_soc_hnat 1b100000.hnat: ext devices = rai3
+[   17.160317] mediatek_soc_hnat 1b100000.hnat: ext devices = ra3
+[   17.166150] mediatek_soc_hnat 1b100000.hnat: ext devices = apclii0
+[   17.172329] mediatek_soc_hnat 1b100000.hnat: ext devices = apcli0
+[   17.178722] mediatek_soc_hnat 1b100000.hnat: FOE entry number = 8192
+[   17.185474] mediatek_soc_hnat 1b100000.hnat: hwnat start
+[   20.141114] mt753x gsw@0: Port 0 Link is Down
+[   20.527943] register mt_drv
+[   20.531094] mt_drv 0001:01:00.0: enabling device (0000 -> 0002)
+[   20.543065]
+[   20.543065]
+[   20.543065] === pAd = ffffff8009701000, size = 13423360 ===
+[   20.543065]
+[   20.553793] <-- RTMPAllocAdapterBlock, Status=0
+[   20.558332] PCI CSRBaseAddress =0xffffff8009600000, csr_addr=0xffffff8009600000!
+[   20.565746] RTMPInitPCIeDevice():device_id=0x7915
+[   20.570452] mt7915_init()-->
+[   20.573330] Use 1st iPAiLNA default bin.
+[   20.577333] <--mt7915_init()
+[   20.583356] wdev_init(caller:RTMP_COM_IoctlHandle+0x340/0x16e0 [mt_wifi]), wdev(0)
+[   20.591271] Rx[0] Ring: total 24576 bytes allocated
+[   20.596218] Rx[1] Ring: total 24576 bytes allocated
+[   20.601548] Rx[2] Ring: total 8192 bytes allocated
+[   20.607188] Rx[3] Ring: total 16384 bytes allocated
+[   20.612514] Rx[4] Ring: total 8192 bytes allocated
+[   20.617318] <-- pci_alloc_tx_rx_ring_mem, Status=0
+[   20.625553] whnat_module_init(): module init and register callback for whnat
+[   20.632637] create whnat_ctrl ok!!!
+[   20.636188] wed_slot_map_get(): assign slot_id:0 for entry: 0!
+[   20.642038] wed_slot_map_get(): assign slot_id:1 for entry: 1!
+[   20.647912] whnat_hif_pcie_mirror_probe(): hif_cfg base addr=ffffff80095e2400
+[   21.790384] mt7622_mt_wifi: module license 'Proprietary' taints kernel.
+[   21.797035] Disabling lock debugging due to kernel taint
+[   21.825352] register mt_drv
+[   21.832119]
+[   21.832119] == pAd = ffffff800ab01000, size = 6778112, Status=0 ==
+[   21.839791] AP Driver version-5.1.0.0
+[   21.843469] read sub id = 2
+[   21.846255] Use 1st ePAeLNA default bin.
+[   21.850176] Use 1st /etc_ro/wlan/MT7622_EEPROM.bin default bin.
+[   21.856099] <--mt7622_init()
+[   21.859619] <-- RTMPAllocTxRxRingMemory, Status=0
+[   21.867854] tun: Universal TUN/TAP device driver, 1.6
+[   21.872954] tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+[   21.883283] ip6_gre: GRE over IPv6 tunneling driver
+[   21.890952] ip6_tables: (C) 2000-2006 Netfilter Core Team
+[   21.911667] NF register ebt rj to local module sucess!
+[   21.917547] Netfilter messages via NETLINK v0.30.
+[   21.923215] ip_set: protocol 6
+[   21.932381] u32 classifier
+[   21.935164]     input device check on
+[   21.938833]     Actions configured
+[   21.942825] Mirror/redirect action on
+[   21.959069] flow_audit_module_init new
+[   21.963008] fa_get_isolcpus:: no isolcpus.
+[   21.972589] core_num:2
+[   21.980203] dev ra0 handler=ffffff800116bba8, wdata=          (null), ptr=          (null)
+[   21.988596] [ROAM_TUN_K] roam init sucess.
+[   21.994860] ip_tables: (C) 2000-2006 Netfilter Core Team
+[   22.012144] nf_conntrack_rtsp v0.7 loading
+[   22.029333] nf_nat_rtsp v0.7 loading
+[   22.035221] NET: Registered protocol family 24
+[   22.040147] PPTP driver version 0.8.5
+[   22.054904] xt_time: kernel timezone is -0000
+[   22.062295] kmodloader: done loading kernel modules from /etc/modules.d/*
+[   24.872601] mtdoops: Attached to MTD device 6
+[   25.105833] mtdoops: ready 0, 1
+=============upinit_finished================
+Ruijie login: root
+Password:
+Login incorrect
+Ruijie login:
